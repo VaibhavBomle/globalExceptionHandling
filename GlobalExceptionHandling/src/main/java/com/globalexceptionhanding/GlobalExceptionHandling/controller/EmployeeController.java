@@ -33,6 +33,7 @@ public class EmployeeController {
 	
 	@GetMapping("/employee/{empId}")
 	public ResponseEntity getEmployee(@PathVariable("empId") Long empId) {
+		System.out.println(empId);
 		Employee employee = employeeServiceInterf.getEmpById(empId);
 		return new ResponseEntity(employee, HttpStatus.FOUND);
 	}

@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.globalexceptionhanding.GlobalExceptionHandling.custome.exception.EmptyInputExcepton;
+import com.globalexceptionhanding.GlobalExceptionHandling.custome.exception.NoDataFoundException;
 import com.globalexceptionhanding.GlobalExceptionHandling.model.Employee;
 
 @Service
@@ -15,6 +17,9 @@ public class EmployeeServiceImpl implements EmployeeServiceInterf {
 	@Override
 	public List<Employee> createEmployee(Employee employee) {
 
+		if (employee.getName().isEmpty()) {
+			throw new EmptyInputExcepton("601", "Input Filed are empty");
+		}
 		createEmployeeList(employee);
 		// TODO Auto-generated method stub
 		return getListOfEmployee();
@@ -30,11 +35,18 @@ public class EmployeeServiceImpl implements EmployeeServiceInterf {
 
 	@Override
 	public Employee getEmpById(Long Id) {
-		for (Employee employee : empList) {
-			if (employee.getEmpId().equals(Id)) {
-				return employee;
+		Employee emp = null;
+		if (!empList.isEmpty()) {
+			for (Employee employee : empList) {
+				if (employee.getEmpId().equals(Id)) {
+					emp = employee;
+					break;
+				} 
 			}
+		}else {
+			throw new NoDataFoundException("404", "No data found");
 		}
-		return null;
+
+		return emp;
 	}
 }
