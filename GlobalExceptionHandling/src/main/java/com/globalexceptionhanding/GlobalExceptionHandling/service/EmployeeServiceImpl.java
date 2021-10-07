@@ -8,7 +8,11 @@ import org.springframework.stereotype.Service;
 import com.globalexceptionhanding.GlobalExceptionHandling.custome.exception.EmptyInputExcepton;
 import com.globalexceptionhanding.GlobalExceptionHandling.custome.exception.NoDataFoundException;
 import com.globalexceptionhanding.GlobalExceptionHandling.model.Employee;
-
+/**
+ * Service for Employee
+ * @author Vaibahv
+ *
+ */
 @Service
 public class EmployeeServiceImpl implements EmployeeServiceInterf {
 
@@ -41,12 +45,13 @@ public class EmployeeServiceImpl implements EmployeeServiceInterf {
 				if (employee.getEmpId().equals(Id)) {
 					emp = employee;
 					break;
-				} 
+				}
 			}
 		}else {
+			System.out.println("emp1==> "+empList);
 			throw new NoDataFoundException("404", "No data found");
 		}
-
+		System.out.println("emp2==> "+empList);
 		return emp;
 	}
 }
