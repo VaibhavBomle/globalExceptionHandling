@@ -38,20 +38,21 @@ public class EmployeeServiceImpl implements EmployeeServiceInterf {
 	}
 
 	@Override
-	public Employee getEmpById(Long Id) {
+	public Employee getEmpById(Long id) {
 		Employee emp = null;
 		if (!empList.isEmpty()) {
 			for (Employee employee : empList) {
-				if (employee.getEmpId().equals(Id)) {
+				if (employee.getEmpId().equals(id)) {
 					emp = employee;
 					break;
 				}
 			}
 		}else {
-			System.out.println("emp1==> "+empList);
 			throw new NoDataFoundException("404", "No data found");
 		}
-		System.out.println("emp2==> "+empList);
+		if(emp == null) {
+			throw new NoDataFoundException("404", "No data found for perticular employee Id: "+id);
+		}
 		return emp;
 	}
 }

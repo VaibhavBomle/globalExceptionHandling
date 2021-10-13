@@ -13,7 +13,6 @@ import com.globalexceptionhanding.GlobalExceptionHandling.custome.exception.NoDa
  * 
  * @author Vaibhav
  * Controller Advice Base Class
- *
  */
 @ControllerAdvice
 public class MyControllerAdvice {
@@ -25,7 +24,7 @@ public class MyControllerAdvice {
 
 	@ExceptionHandler(NoDataFoundException.class)
 	public ResponseEntity<String> noDataFoundException(NoDataFoundException noDataFoundException) {
-		return new ResponseEntity<String>("No Data Found", HttpStatus.NOT_FOUND);
+		return new ResponseEntity<String>(noDataFoundException.getErrorMsg(), HttpStatus.NOT_FOUND);
 	}
 	
 	@ExceptionHandler(NullPointerException.class)

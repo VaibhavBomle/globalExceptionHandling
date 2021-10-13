@@ -15,6 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.globalexceptionhanding.GlobalExceptionHandling.model.Employee;
 import com.globalexceptionhanding.GlobalExceptionHandling.service.EmployeeServiceInterf;
 
+/**
+ * 
+ * @author Vaibhav
+ * Controller to Understand Global Exception Handling.
+ *
+ */
 @RestController
 @RequestMapping("/api/v1")
 public class EmployeeController {

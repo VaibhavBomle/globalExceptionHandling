@@ -1,0 +1,36 @@
+API End point
+------------
+POST:
+----
+Step 1: make post call as mention below
+url: http://localhost:8080/api/v1/employee
+
+ {
+	"name":"Kevin",
+	"empId":101
+}
+
+Step 2: make post call with empty name filed and see exception
+url: http://localhost:8080/api/v1/employee
+
+ {
+	"name":"",
+	"empId":101
+}
+
+Step 3: make post call with null filed and see exception
+url: http://localhost:8080/api/v1/employee
+
+{
+	"name":null,
+	"empId":101
+}
+
+GET:
+----
+Step 1: make get call as mention below url
+url: http://localhost:8080/api/v1/employee/101
+
+Step 1: make get call as mention below url and see exception
+url: http://localhost:8080/api/v1/employee/103
+
